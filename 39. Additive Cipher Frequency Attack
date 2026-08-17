@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char text[200];
+    int count[26] = {0};
+    int i, j, max, pos;
+
+    printf("Enter ciphertext: ");
+    scanf(" %[^\n]", text);
+
+    for (i = 0; text[i] != '\0'; i++)
+        if (isalpha(text[i]))
+            count[toupper(text[i]) - 'A']++;
+
+    printf("Possible plaintexts:\n");
+
+    for (j = 0; j < 10; j++) {
+        max = -1;
+        pos = -1;
+
+        for (i = 0; i < 26; i++) {
+            if (count[i] > max) {
+                max = count[i];
+                pos = i;
+            }
+        }
+
+        if (pos == -1)
+            break;
+
+        count[pos] = -1;
+
+        printf("%d. Assuming %c represents E: ",
+               j + 1, pos + 'A');
+
+        for (i = 0; text[i] != '\0'; i++) {
+            if (isalpha(text[i]))
+                printf("%c",
+                (toupper(text[i]) - pos + 4 + 26) % 26 + 'A');
+            else
+                putchar(text[i]);
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
