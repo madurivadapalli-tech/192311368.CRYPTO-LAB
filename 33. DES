@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main() {
+    unsigned long long plaintext, key;
+
+    printf("Enter 64-bit plaintext in hexadecimal: ");
+    scanf("%llx", &plaintext);
+
+    printf("Enter 64-bit key in hexadecimal: ");
+    scanf("%llx", &key);
+
+    printf("Plaintext = %016llX\n", plaintext);
+    printf("Key       = %016llX\n", key);
+
+    printf("DES uses 64-bit blocks and a 56-bit effective key.\n");
+    printf("DES performs 16 Feistel rounds.\n");
+
+    return 0;
+}
