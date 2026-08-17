@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char text[200];
+    char freq[] = "ETAOINSHRDLCUMWFGYPBVKJXQZ";
+    int count[26] = {0};
+    int map[26];
+    int i, j, max, pos;
+
+    printf("Enter ciphertext: ");
+    scanf(" %[^\n]", text);
+
+    for (i = 0; i < 26; i++)
+        map[i] = -1;
+
+    for (i = 0; text[i] != '\0'; i++)
+        if (isalpha(text[i]))
+            count[toupper(text[i]) - 'A']++;
+
+    for (i = 0; i < 26; i++) {
+        max = -1;
+        pos = -1;
+
+        for (j = 0; j < 26; j++) {
+            if (count[j] > max && map[j] == -1) {
+                max = count[j];
+                pos = j;
+            }
+        }
+
+        if (pos != -1)
+            map[pos] = freq[i];
+    }
+
+    printf("Possible plaintext: ");
+
+    for (i = 0; text[i] != '\0'; i++) {
+        if (isalpha(text[i]))
+            putchar(map[toupper(text[i]) - 'A']);
+        else
+            putchar(text[i]);
+    }
+
+    printf("\n");
+
+    return 0;
+}
