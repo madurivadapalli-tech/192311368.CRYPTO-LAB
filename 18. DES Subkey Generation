@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdint.h>
+
+int main() {
+    unsigned long long key;
+
+    printf("Enter 64-bit key in hexadecimal: ");
+    scanf("%llx", &key);
+
+    printf("DES key: %016llX\n", key);
+    printf("First 24 bits of each subkey come from one 28-bit half.\n");
+    printf("Second 24 bits come from the other 28-bit half.\n");
+    printf("After PC-1, the key is divided into C and D, then left shifts\n");
+    printf("and PC-2 generate 16 subkeys of 48 bits each.\n");
+
+    return 0;
+}
