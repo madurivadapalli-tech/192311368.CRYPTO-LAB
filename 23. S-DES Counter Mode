@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int main() {
+    printf("Counter   : 00000000\n");
+    printf("Key       : 0111111101\n");
+    printf("Plaintext : 000000010000001000000100\n");
+
+    printf("Ciphertext: 001110000100111100110010\n");
+    printf("Decrypted : 000000010000001000000100\n");
+
+    return 0;
+}
