@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+int inverse(int a) {
+    int i;
+    for (i = 1; i < 26; i++)
+        if ((a * i) % 26 == 1)
+            return i;
+    return -1;
+}
+
+int main() {
+    int p[2][2], c[2][2];
+    int det, inv;
+    int k00, k01, k10, k11;
+
+    printf("Enter plaintext matrix:\n");
+    scanf("%d%d%d%d",
+          &p[0][0], &p[0][1],
+          &p[1][0], &p[1][1]);
+
+    printf("Enter ciphertext matrix:\n");
+    scanf("%d%d%d%d",
+          &c[0][0], &c[0][1],
+          &c[1][0], &c[1][1]);
+
+    det = (p[0][0] * p[1][1] -
+           p[0][1] * p[1][0]) % 26;
+
+    if (det < 0)
+        det += 26;
+
+    inv = inverse(det);
+
+    if (inv == -1) {
+        printf("Matrix is not invertible.\n");
+        return 0;
+    }
+
+    k00 = inv * (c[0][0] * p[1][1] -
+                 c[0][1] * p[1][0]) % 26;
+
+    k01 = inv * (-c[0][0] * p[0][1] +
+                  c[0][1] * p[0][0]) % 26;
+
+    k10 = inv * (c[1][0] * p[1][1] -
+                 c[1][1] * p[1][0]) % 26;
+
+    k11 = inv * (-c[1][0] * p[0][1] +
+                  c[1][1] * p[0][0]) % 26;
+
+    if (k00 < 0) k00 += 26;
+    if (k01 < 0) k01 += 26;
+    if (k10 < 0) k10 += 26;
+    if (k11 < 0) k11 += 26;
+
+    printf("Recovered Key:\n");
+    printf("%d %d\n", k00, k01);
+    printf("%d %d\n", k10, k11);
+
+    return 0;
+}
