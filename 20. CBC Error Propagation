@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    printf("a) Error in C1:\n");
+    printf("P1 is completely corrupted.\n");
+    printf("P2 has one corresponding bit error.\n");
+    printf("P3 and later blocks are not affected.\n");
+
+    printf("\nb) Error in source P1:\n");
+    printf("The error changes C1.\n");
+    printf("The error propagates through all following CBC ciphertext blocks.\n");
+    printf("At the receiver, P1 and subsequent plaintext blocks are affected.\n");
+
+    return 0;
+}
