@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char plain[100], cipher[27] = "CIPHERABDFGJKLMNOQSTUVWXYZ";
+    int i, pos;
+
+    printf("Plain alphabet:\n");
+    printf("ABCDEFGHIJKLMNOPQRSTUVWXYZ\n");
+
+    printf("Cipher alphabet:\n");
+    printf("%s\n", cipher);
+
+    printf("Enter plaintext: ");
+    scanf(" %[^\n]", plain);
+
+    for (i = 0; plain[i] != '\0'; i++) {
+        if (isalpha(plain[i])) {
+            pos = toupper(plain[i]) - 'A';
+            plain[i] = cipher[pos];
+        }
+    }
+
+    printf("Ciphertext: %s\n", plain);
+
+    return 0;
+}
