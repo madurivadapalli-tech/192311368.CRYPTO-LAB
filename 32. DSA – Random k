@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    printf("Message: HELLO\n");
+    printf("Signature 1 uses k = 17\n");
+    printf("Signature 2 uses k = 29\n\n");
+
+    printf("The signatures are different because different k values are used.\n");
+    printf("RSA signatures normally remain deterministic for the same input.\n");
+    printf("DSA requires k to be secret, unpredictable, and never reused.\n");
+
+    return 0;
+}
