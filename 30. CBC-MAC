@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int main() {
+    printf("Let T = MAC(K, X)\n");
+    printf("Construct message: X || (X XOR T)\n");
+    printf("CBC-MAC of this message is again T.\n");
+    printf("Therefore an attacker can create a different message with the same MAC.\n");
+
+    return 0;
+}
