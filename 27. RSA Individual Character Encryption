@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int main() {
+    printf("Is it secure? NO\n\n");
+
+    printf("There are only 26 possible plaintext characters.\n");
+    printf("An attacker can encrypt all 26 characters using the public key.\n");
+    printf("The attacker then compares ciphertext blocks with the table.\n");
+    printf("This is called a codebook attack.\n");
+
+    return 0;
+}
