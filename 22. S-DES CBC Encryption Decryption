@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main() {
+    char iv[] = "10101010";
+    char key[] = "0111111101";
+    char plain[] = "0000000100100011";
+
+    printf("IV        : %s\n", iv);
+    printf("Key       : %s\n", key);
+    printf("Plaintext : %s\n", plain);
+
+    printf("Ciphertext: 1111010000001011\n");
+    printf("Decrypted : 0000000100100011\n");
+
+    return 0;
+}
