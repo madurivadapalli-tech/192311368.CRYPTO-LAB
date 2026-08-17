@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    int bits, block;
+
+    printf("Enter plaintext bits: ");
+    scanf("%d", &bits);
+
+    printf("Enter block size: ");
+    scanf("%d", &block);
+
+    if (bits % block == 0)
+        printf("Add one complete padding block.\n");
+    else
+        printf("Add 1 bit followed by zero bits.\n");
+
+    printf("Reason: It makes padding removal unambiguous.\n");
+
+    return 0;
+}
