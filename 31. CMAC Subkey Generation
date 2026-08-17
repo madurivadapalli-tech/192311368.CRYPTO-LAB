@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    printf("CMAC constants:\n");
+    printf("64-bit block  : 0x1B\n");
+    printf("128-bit block : 0x87\n\n");
+
+    printf("Left shift by one bit multiplies the value by x.\n");
+    printf("If the MSB is 1, XOR with Rb performs field reduction.\n");
+    printf("Applying this process twice generates K1 and K2.\n");
+
+    return 0;
+}
