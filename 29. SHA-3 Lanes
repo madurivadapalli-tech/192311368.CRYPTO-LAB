@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main() {
+    int capacity = 576;
+    int lane = 64;
+
+    printf("Capacity = %d bits\n", capacity);
+    printf("Lane size = %d bits\n", lane);
+    printf("Capacity lanes = %d\n", capacity / lane);
+
+    printf("Without permutation, the original zero lanes remain zero.\n");
+    printf("Therefore they never become nonzero.\n");
+    printf("Time required = Infinite.\n");
+
+    return 0;
+}
