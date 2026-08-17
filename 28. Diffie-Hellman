@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+long long power(long long a, long long b, long long q) {
+    long long r = 1;
+
+    while (b > 0) {
+        r = (r * a) % q;
+        b--;
+    }
+
+    return r;
+}
+
+int main() {
+    long long a, q, x, y;
+    long long A, B, key;
+
+    printf("Enter public a: ");
+    scanf("%lld", &a);
+
+    printf("Enter public q: ");
+    scanf("%lld", &q);
+
+    printf("Enter Alice secret x: ");
+    scanf("%lld", &x);
+
+    printf("Enter Bob secret y: ");
+    scanf("%lld", &y);
+
+    A = power(a, x, q);
+    B = power(a, y, q);
+
+    key = power(B, x, q);
+
+    printf("Alice sends: %lld\n", A);
+    printf("Bob sends: %lld\n", B);
+    printf("Shared key: %lld\n", key);
+
+    printf("Eve cannot normally find the secret numbers efficiently.\n");
+
+    return 0;
+}
