@@ -1,0 +1,10 @@
+#include <stdio.h>
+
+int main() {
+    printf("Bob leaked his private key.\n");
+    printf("Changing only e and d is NOT safe if the same modulus n is retained.\n");
+    printf("A new RSA modulus must be generated using new p and q.\n");
+    printf("Therefore, Bob should generate a completely new key pair.\n");
+
+    return 0;
+}
