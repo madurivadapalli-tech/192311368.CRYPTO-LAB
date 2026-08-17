@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int inverse(int a) {
+    int i;
+    for (i = 1; i < 26; i++)
+        if ((a * i) % 26 == 1)
+            return i;
+    return -1;
+}
+
+int main() {
+    char p[100], c[100], d[100];
+    int i, n = 0;
+    int x, y, det, inv;
+
+    printf("Enter plaintext: ");
+    scanf(" %[^\n]", p);
+
+    for (i = 0; p[i] != '\0'; i++)
+        if (isalpha(p[i]))
+            p[n++] = toupper(p[i]);
+
+    if (n % 2 != 0)
+        p[n++] = 'X';
+
+    p[n] = '\0';
+
+    det = (9 * 7 - 4 * 5) % 26;
+    inv = inverse(det);
+
+    for (i = 0; i < n; i += 2) {
+        x = p[i] - 'A';
+        y = p[i + 1] - 'A';
+
+        c[i] = (9 * x + 4 * y) % 26 + 'A';
+        c[i + 1] = (5 * x + 7 * y) % 26 + 'A';
+    }
+
+    c[n] = '\0';
+
+    printf("Ciphertext: %s\n", c);
+
+    for (i = 0; i < n; i += 2) {
+        x = c[i] - 'A';
+        y = c[i + 1] - 'A';
+
+        d[i] = (inv * (7 * x - 4 * y + 26)) % 26 + 'A';
+        d[i + 1] = (inv * (-5 * x + 9 * y + 26)) % 26 + 'A';
+    }
+
+    d[n] = '\0';
+
+    printf("Decrypted: %s\n", d);
+
+    return 0;
+}
