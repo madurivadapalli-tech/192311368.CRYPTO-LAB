@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+    printf("CBC Mode using 3DES\n\n");
+
+    printf("C1 = E(K, P1 XOR IV)\n");
+    printf("C2 = E(K, P2 XOR C1)\n");
+    printf("C3 = E(K, P3 XOR C2)\n");
+
+    printf("\na) Security: 3DES\n");
+    printf("b) Performance: DES\n");
+
+    return 0;
+}
