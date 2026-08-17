@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+long long inverse(long long a, long long m) {
+    long long x;
+    for (x = 1; x < m; x++)
+        if ((a * x) % m == 1)
+            return x;
+    return -1;
+}
+
+int main() {
+    long long n = 3599, e = 31;
+    long long p = 59, q = 61;
+    long long phi, d;
+
+    phi = (p - 1) * (q - 1);
+    d = inverse(e, phi);
+
+    printf("p = %lld\n", p);
+    printf("q = %lld\n", q);
+    printf("phi(n) = %lld\n", phi);
+    printf("Private key d = %lld\n", d);
+
+    return 0;
+}
